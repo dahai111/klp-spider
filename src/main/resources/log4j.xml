@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- 输出到日志文件 -->
+	<appender name="FILE_APPENDER_bak" class="org.apache.log4j.RollingFileAppender">
+		<!-- 设置File参数：日志输出文件名 /data/logs/local/local.log -->
+		<param name="file" value="D:\logs\spider.log" />
+		<param name="encoding" value="UTF-8" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="append" value="true" />
+		<!-- 设置文件大小 -->
+		<param name="maxFileSize" value="50MB" /> 
+		<!-- 设置文件备份 -->
+		<param name="maxBackupIndex" value="50" />
+		<!-- <param name="Threshold" value="INFO" /> -->
+		<!-- 设置输出文件项目和格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss,SSS}[%-5p]-%t:%l:%m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 按日统计 -->
+	<appender name="FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+		<!-- 设置File参数：日志输出文件名 -->
+		<param name="file" value="/data/logs/customer/customer.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd"/>
+		<param name="encoding" value="UTF-8" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="append" value="true" />
+		<!-- 设置文件备份 -->
+		<!-- <param name="maxBackupIndex" value="2" /> -->
+		<!-- 设置输出文件项目和格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{YYYY-MM-dd HH:mm:ss}[%-5p]-%t:%l:%m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Appenders -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS}[%-5p]-%t:%l:%m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="com.eqz.collection.info" >
+		<level value="debug" />
+	</logger>
+	
+	<logger name="java.sql">
+		<level value="debug"/>
+	</logger>
+	
+	<logger name="org.apache.ibatis">
+		<level value="debug"/>
+	</logger>
+	
+	<logger name="org.springframework">
+		<level value="info" />
+	</logger>
+	<logger name="us.codecraft.webmagic">
+		<level value="ERROR" />
+	</logger>
+	<logger name="org.apache.http">
+		<level value="ERROR" />
+	</logger>
+	
+	<logger name="org.dozer">
+		<level value="ERROR" />
+	</logger>
+	
+	<logger name="org.apache.commons">
+		<level value="ERROR" />
+	</logger>
+	
+	<logger name="com.alibaba">
+		<level value="WARN" />
+	</logger>
+	
+	<logger name="org.mybatis">
+		<level value="ERROR"/>
+	</logger>
+	
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="FILE_APPENDER_bak" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+	
+</log4j:configuration>
+<!-- 
+
+%c        输出所属类的全名，可在修改为 %d{Num} ,Num类名输出的维（如："org.apache.elathen.ClassName",%C{2}将输出elathen.ClassName）
+%d        输出日志时间其格式为 %d{yyyy-MM-dd HH:mm:ss,SSS}，可指定格式 如 %d{HH:mm:ss}
+%l        输出日志事件发生位置，包括类目名、发生线程，在代码中的行数
+%n        换行符
+%m        输出代码指定信息，如info(“message”),输出message
+%p        输出优先级，即 FATAL ,ERROR 等
+%r        输出从启动到显示该log信息所耗费的毫秒数
+%t        输出产生该日志事件的线程名
+ -->

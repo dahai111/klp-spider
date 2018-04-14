@@ -1,0 +1,105 @@
+POST stock/_mapping/everyday_price
+{
+  "everyday_price": {
+    "properties": {
+      "code": {
+        "type": "text",
+        "store": true,
+        "fielddata": true
+      },
+      "name": {
+        "type": "text",
+        "store": true,
+        "fielddata": true
+      },
+      "price": {
+        "type": "float",
+        "store": true
+      },
+      "range": {
+        "type": "float",
+        "store": true
+      },
+      "isRise": {
+        "type": "text",
+        "store": true
+      },
+      "start": {
+        "type": "float",
+        "store": true
+      },
+      "max": {
+        "type": "float",
+        "store": true
+      },
+      "min": {
+        "type": "float",
+        "store": true
+      },
+      "quantityRatio": {
+        "type": "float",
+        "store": true
+      },
+      "turnoverRatio": {
+        "type": "float",
+        "store": true
+      },
+      "dealCount": {
+        "type": "float",
+        "store": true
+      },
+      "dealMoney": {
+        "type": "float",
+        "store": true
+      },
+      "sj": {
+        "type": "float",
+        "store": true
+      },
+      "sy": {
+        "type": "float",
+        "store": true
+      },
+      "capitalization": {
+        "type": "float",
+        "store": true
+      },
+      "circulateCapitalization": {
+        "type": "float",
+        "store": true
+      },
+      "superIn": {
+        "type": "float",
+        "store": true
+      },
+      "superOut": {
+        "type": "float",
+        "store": true
+      },
+      "largeIn": {
+        "type": "float",
+        "store": true
+      },
+      "largeOut": {
+        "type": "float",
+        "store": true
+      },
+      "mediumIn": {
+        "type": "float",
+        "store": true
+      },
+      "mediumOut": {
+        "type": "float",
+        "store": true
+      },
+      "smallIn": {
+        "type": "float",
+        "store": true
+      },
+      "smallOut": {
+        "type": "float",
+        "store": true
+      }
+    }
+  }
+}
